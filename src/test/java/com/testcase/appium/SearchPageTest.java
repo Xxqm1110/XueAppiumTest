@@ -3,6 +3,7 @@ package com.testcase.appium;
 import appium.pages.MainPage;
 import appium.pages.SearchPage;
 import net.bytebuddy.asm.Advice;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,4 +34,9 @@ public class SearchPageTest {
     void getPrice(){
         assertTrue(searchPage.search("alibaba").getPrice()>200);
     }
+    @AfterAll
+    public static void afterAlll(){
+        searchPage.tearsDown();
+    }
+
 }

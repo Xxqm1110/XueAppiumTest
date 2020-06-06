@@ -1,6 +1,7 @@
 package appium.pages;
 
 import com.google.common.base.Strings;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
@@ -9,39 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class DetailsPage {
-    private AndroidDriver driver;
-    public SearchPage searchPage;
+public class DetailsPage  extends BasePage{
 
-    public DetailsPage(AndroidDriver driver){
-        this.driver =driver;
-//        this.searchPage =new SearchPage(driver)
+    public DetailsPage(AppiumDriver driver){
+        super(driver);
     }
     public DetailsPage ClearStocks(){
+        //判断列表是否为空
         if (getStocksList().size()>0){
-            MobileElement el2 = (MobileElement) driver.findElementById("com.xueqiu.android:id/edit_group");
-            el2.click();
-            MobileElement el3 = (MobileElement) driver.findElementById("com.xueqiu.android:id/check_all");
-            el3.click();
-            MobileElement el4 = (MobileElement) driver.findElementById("com.xueqiu.android:id/cancel_follow");
-            el4.click();
-            MobileElement el5 = (MobileElement) driver.findElementById("com.xueqiu.android:id/tv_right");
-            el5.click();
+            //点击列表管理菜单
+            click(By.id("edit_group"));
+            //点击全选
+            click(By.id("check_all"));
+            //点击取消关注
+            click(By.id("cancel_follow"));
+            //点击确定取消关注
+            click(By.id("tv_right"));
+            //等待优化
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            MobileElement el6 = (MobileElement) driver.findElementById("com.xueqiu.android:id/action_close");
-            el6.click();
+            //点击退出列表管理菜单
+            click(By.id("action_close"));
         }
         return  this;
     }
 
     public DetailsPage goToSearch(){
-        MobileElement el7 = (MobileElement) driver.findElementById("com.xueqiu.android:id/action_search");
-        el7.click();
+        click(By.id("action_search"));
         return this;
     }
     public DetailsPage exitSearch(){
-        MobileElement el13 = (MobileElement) driver.findElementById("com.xueqiu.android:id/action_close");
-        el13.click();
+        click(By.id("action_close"));
         return  this;
     }
     public DetailsPage addStock(String keyword){
@@ -76,5 +74,8 @@ public class DetailsPage {
             stocksList.add(((MobileElement)element).getText());
         }
         return  stocksList;
+    }
+    public  void quit(){
+        tearsDown();
     }
 }

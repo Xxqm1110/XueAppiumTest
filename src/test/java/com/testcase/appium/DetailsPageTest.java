@@ -1,5 +1,6 @@
 package com.testcase.appium;
 
+import appium.pages.BasePage;
 import appium.pages.DetailsPage;
 import appium.pages.MainPage;
 import appium.pages.SearchPage;
@@ -16,12 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DetailsPageTest {
     static DetailsPage detailsPage;
-    static SearchPage searchPage;
-    static  MainPage  mainPage;
     @BeforeAll
     static void beforeAll ()throws MalformedURLException{
-        mainPage =new MainPage();
-        detailsPage = mainPage.toDetailPage();
+        detailsPage = new MainPage().toDetailPage();
     }
     @Test
     void  ClearStocks(){
@@ -43,6 +41,6 @@ class DetailsPageTest {
     }
     @AfterAll
     static void tearsDown(){
-        mainPage.tearDown();
+        detailsPage.quit();
     }
 }
