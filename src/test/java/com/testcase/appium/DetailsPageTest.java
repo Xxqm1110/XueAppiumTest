@@ -35,11 +35,14 @@ class DetailsPageTest {
         @CsvSource({
                 "alibaba, 阿里巴巴",
                 "jd, 京东",
-                "tengxun, 腾讯",
+                "tengxun, 腾讯控股",
         })
         void addStocks(String keyword, String name) {
             assertTrue(detailsPage.goToSearch().addStock(keyword).exitSearch().getStocksList().contains(name));
         }
     }
-
+    @AfterAll
+    static void tearsDown(){
+        mainPage.tearDown();
+    }
 }

@@ -58,10 +58,10 @@ public class DetailsPage {
         el10.click();
         //等待弹框并点掉
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        MobileElement el11 = (MobileElement) driver.findElementById("com.xueqiu.android:id/tv_left");
-        if (el11!=null){
-            el11.click();
-        }
+//        MobileElement el11 = (MobileElement) driver.findElementById("com.xueqiu.android:id/tv_left");
+//        if (el11!=null){
+//            el11.click();
+//        }
         //清除选项
         MobileElement el12 = (MobileElement) driver.findElementById("com.xueqiu.android:id/action_delete_text");
         el12.click();

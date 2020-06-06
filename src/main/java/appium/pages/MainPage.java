@@ -38,5 +38,9 @@ public class MainPage {
         el1.click();
         return  new DetailsPage(driver);
     }
+    public void  tearDown(){
+        driver.quit();
+
+    }
 
 }
