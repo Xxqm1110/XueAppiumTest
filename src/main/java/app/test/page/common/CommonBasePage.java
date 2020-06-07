@@ -3,7 +3,6 @@ package app.test.page.common;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,13 +12,22 @@ import java.util.concurrent.TimeUnit;
 
 public class CommonBasePage {
     protected AppiumDriver<MobileElement> driver;
-    public CommonBasePage(AppiumDriver<MobileElement> driver) {
+    public WebDriverWait wait;
+    public long timeOutInSecondsDefault=10;
+    public CommonBasePage(AppiumDriver<MobileElement> driver,WebDriverWait wait) {
         this.driver = driver;
+        this.wait =wait;
     }
     public CommonBasePage(){
 
     }
-    public CommonBasePage(String appPackage, String LauchActivity)  {
+
+    public CommonBasePage(String appPackage, String lauchActivity)  {
+        super();
+        startApp(appPackage,lauchActivity);
+
+    }
+    protected void startApp(String appPackage,String LauchActivity){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("deviceName", "127.0.0.1:7555");
@@ -34,47 +42,17 @@ public class CommonBasePage {
         try {
             URL remoteUrl  = new URL("http://localhost:4723/wd/hub");
             driver = new AndroidDriver(remoteUrl, desiredCapabilities);
-            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+            // 优化等待
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
+        wait = new WebDriverWait(driver, timeOutInSecondsDefault);
     }
-
     protected void  tearsDown(){
         driver.quit();
     }
-    protected void click(By by){
-        driver.findElement(by).click();
-    }
-    protected void find(By by){
-        driver.findElement(by);
-    }
-    public By byText(String text){
-        return By.xpath("//*[@text='"+ text + "']");
-    }
-    protected  void clickByText(String text){
-        driver.findElement(byText(text)).click();
-    }
-    protected  void clickById(String id){
-        driver.findElement(byId(id)).click();
-    }
-    public By byId(String id){
-        return By.xpath("//*[@id='"+ id+ "']");
-    }
-    protected void clickByIndex(By by,int index){
-        driver.findElements(by).get(index).click();
-    }
-    protected  void waitElement(String name,int waitTime){
-        long start=System.currentTimeMillis();
-        new WebDriverWait(driver,waitTime).until(x->{
-            String xml = driver.getPageSource();
-            Boolean exist =xml.contains(name);
-            System.out.println(exist);
-            return  exist;
 
-        });
 
-    }
 }
