@@ -5,7 +5,7 @@ import app.test.page.common.CommonBasePage;
 import app.test.viewer.xueqiu.MainPageView;
 import org.openqa.selenium.By;
 
-public class MainPage extends CommonBasePage {
+public class MainPage extends XueqiuBasePage {
     public MainPage() {
         super("com.xueqiu.android",".view.WelcomeActivityAlias");
     }

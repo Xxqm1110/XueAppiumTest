@@ -23,7 +23,6 @@ public class CommonBasePage {
     }
 
     public CommonBasePage(String appPackage, String lauchActivity)  {
-        super();
         startApp(appPackage,lauchActivity);
 
     }

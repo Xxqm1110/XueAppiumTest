@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchPage extends CommonBasePage {
+public class SearchPage extends XueqiuBasePage {
 
     public SearchPage(AppiumDriver driver, WebDriverWait wait){
         super(driver,wait);

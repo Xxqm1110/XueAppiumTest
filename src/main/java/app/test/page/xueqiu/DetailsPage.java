@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class DetailsPage  extends CommonBasePage {
+public class DetailsPage  extends XueqiuBasePage {
 
     public DetailsPage(AppiumDriver<MobileElement> driver,WebDriverWait wait){
         super(driver,wait);

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-public class 日程Page extends CommonBasePage {
+public class 日程Page extends WeWorkBasePage {
     private final String  taskName_id = "b2k";
     private final String save_text = "保存";
     private final  String taskList_id = "gg_";
