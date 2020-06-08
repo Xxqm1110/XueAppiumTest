@@ -11,4 +11,8 @@ public class WeWorkMainPage extends WeWorkBasePage {
         AppClicker.clickById(MainPageView.SCHEDULE_ID,wait);
         return  new SchedulePage(driver,wait);
     }
+    public TODOPage todoPage(){
+        AppClicker.clickById(MainPageView.TO_DO_ID,wait);
+        return  new TODOPage(driver,wait);
+    }
 }
