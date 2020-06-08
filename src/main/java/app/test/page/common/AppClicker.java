@@ -39,6 +39,10 @@ public class AppClicker {
     public static void inputTextById(WebDriver driver, String id, String content){
         driver.findElement(By.id(id)).sendKeys(content);
     }
+    public static void clickByContentDesc(String contentDesc,WebDriverWait wait){
+        String xpath="//android.view.View[@content-desc="+"'"+contentDesc+"']";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+    }
     public static void inputTextAndCheckId(WebDriver driver, String id, String content,String checker){
        do{
            driver.findElement(By.id(id)).sendKeys(content);
