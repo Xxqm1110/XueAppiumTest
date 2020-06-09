@@ -22,7 +22,19 @@ public class AppClicker {
 //        return By.xpath("//*[@id='"+ id + "']");
         return By.id(id);
     }
+    public static By findByIdAndText(String appPackge,String id,String text){
+      String   xpath="//*[@resource-id='"+appPackge+":id/"+id+"'][@text='"+text+"']";
+      return  By.xpath(xpath);
 
+    }
+    public static By findByTextAndIndex(int index,String text){
+        String   xpath="//*[@text="+text+" and @index="+index+"\""+"]";
+        return  By.xpath(xpath);
+
+    }
+    public static void click(By by,WebDriverWait wait){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by)).click();
+    }
     public  static  void clickByIndextid(String id,WebDriverWait wait,int index){
         List<WebElement> elements= wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id(id)));
         if (elements.size()>0){

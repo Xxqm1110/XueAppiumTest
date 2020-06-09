@@ -1,6 +1,7 @@
 package app.test.page.wework;
 
 import app.test.page.common.AppClicker;
+import app.test.viewer.wework.ScheduleDetailsView;
 import app.test.viewer.wework.ScheduleView;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,7 +20,12 @@ public class SchedulePage extends WeWorkBasePage {
         AppClicker.clickById(ScheduleView.SAVE_BUTTON_ID10,wait);
         return  this;
     }
-
+    public SchedulePage deleteSchedule(String name,int index){
+        AppClicker.click(AppClicker.byText(name),wait);
+        ScheduleDetailsPage detailsPage = new ScheduleDetailsPage(driver,wait);
+        detailsPage.deleteSchedule().goBack();
+        return this;
+    }
     public List<Object> 获取日程列表(String day){
         if (day!=null){
             AppClicker.clickByContentDesc(day,wait);
