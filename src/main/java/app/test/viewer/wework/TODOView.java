@@ -9,4 +9,6 @@ public class TODOView {
     public static final String SAVE_BUTTON_ID="gxq";
     /**待办事项列表事项描述名称**/
     public static final String TODO_NAME_ID="gw9";
+    /**待办事项单选框**/
+    public static final String TODO_CHECKBOX_ID="gwt";
 }

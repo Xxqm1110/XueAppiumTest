@@ -61,4 +61,9 @@ public class AppClicker {
        }while(driver.findElement(By.id(checker))==null);
         driver.findElement(By.id(id)).sendKeys(content);
     }
+    public static WebElement findEleMentById(WebDriverWait wait,String id){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(byId(id)));
+        return  element;
+    }
+
 }

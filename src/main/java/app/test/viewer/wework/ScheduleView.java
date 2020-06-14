@@ -3,6 +3,8 @@ package app.test.viewer.wework;
 public class ScheduleView {
     /**返回按钮**/
     public static final String BACK_BUTTON_ID="gyb";
+    /**日期显示id**/
+    public static final String DATE_DAY_TEXT_ID="g9j";
     /**添加日程按钮**/
     public static final String ADD_BUTTON_ID="gym";
     /**添加日程按钮**/
